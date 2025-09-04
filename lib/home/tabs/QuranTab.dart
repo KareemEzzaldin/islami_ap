@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:islami_ap/home/SuraNames.dart';
+import 'package:islami_ap/l10n/app_localizations.dart';
 
 class QuranTab extends StatelessWidget {
   List<String> suraNames =  [
@@ -144,21 +145,21 @@ class QuranTab extends StatelessWidget {
           children: [
             Expanded(
                 child: Text(
-                  "اسم السورة",
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  AppLocalizations.of(context)!.sura_name,
+                  style: Theme.of(context).textTheme.titleMedium,
                   textAlign: TextAlign.center,)
             ),
             Container(
               height: 40,
               width: 2,
               decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.primary
+                color: Theme.of(context).colorScheme.onPrimaryContainer
               ),
             ),
             Expanded(
                 child: Text(
-                  "عدد الايات",
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  AppLocalizations.of(context)!.verses_number,
+                  style: Theme.of(context).textTheme.titleMedium,
                   textAlign: TextAlign.center,
                 )
             ),

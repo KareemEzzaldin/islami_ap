@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:islami_ap/l10n/app_localizations.dart';
 
 class Sebhatab extends StatefulWidget {
   @override
@@ -31,21 +32,21 @@ class _SebhatabState extends State<Sebhatab> {
             ),
           ),
           SizedBox(height: 30),
-          Text("عدد التسبيحات", style: TextStyle(fontSize: 25),),
+          Text(AppLocalizations.of(context)!.number_of_tasbeh, style: Theme.of(context).textTheme.titleMedium,),
           SizedBox(height: 30,),
           Container(
             padding: EdgeInsets.symmetric(horizontal: 30,vertical: 30),
             margin: EdgeInsets.symmetric(horizontal: 160),
             decoration: BoxDecoration(
-              color: Color(0xffB7935F).withOpacity(0.57),
+              color: Theme.of(context).colorScheme.primary,
               borderRadius: BorderRadius.circular(20)
             ),
-            child: Text("$count", style: TextStyle(fontSize: 25, color: Colors.black)),
+            child: Text("$count", style: Theme.of(context).textTheme.bodySmall),
           ),
           SizedBox(height: 30,),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
-              backgroundColor: Theme.of(context).primaryColor,
+              backgroundColor: Theme.of(context).colorScheme.secondary,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20)
               ),

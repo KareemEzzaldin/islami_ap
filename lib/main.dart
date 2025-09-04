@@ -1,10 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:islami_ap/ahadeth_details/AhadethDetailsScreen.dart';
 import 'package:islami_ap/home/home_screen.dart';
+import 'package:islami_ap/providers/SettingsProvider.dart';
 import 'package:islami_ap/quran_details/QuranDetailsScreen.dart';
+import 'package:islami_ap/style/AppStyle.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:provider/provider.dart';
+
+import 'l10n/app_localizations.dart';
 
 void main() {
-  runApp(const MyApp());
+  // new version
+  runApp(ChangeNotifierProvider(
+    create: (context) => SettingsProvider() ,
+      child: const MyApp()),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -14,51 +24,23 @@ class MyApp extends StatelessWidget {
   //comment
   @override
   Widget build(BuildContext context) {
+    SettingsProvider settingsProvider = Provider.of<SettingsProvider>(context);
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        cardTheme: CardThemeData(
-          surfaceTintColor: Colors.white,
-          color: Colors.white,
-          elevation: 20,
-          margin: EdgeInsets.all(20),
-        ),
-        appBarTheme: AppBarTheme(
-          centerTitle: true,
-          backgroundColor: Colors.transparent,
-          titleTextStyle: TextStyle(
-            fontSize: 30,
-            fontWeight: FontWeight.bold,
-            color: Colors.black
-          )
-        ),
-        scaffoldBackgroundColor: Colors.transparent,
-        dividerColor: Color(0xffB7935F),
-        dividerTheme: DividerThemeData(
-          color: Color(0xffB7935F),
-          thickness: 3,
-        ),
-        bottomNavigationBarTheme: BottomNavigationBarThemeData(
-          backgroundColor: Color(0xffB7935F),
-          selectedItemColor: Colors.black,
-          selectedIconTheme: IconThemeData(
-            color: Colors.black,
-            size: 50,
-          ),
-          unselectedIconTheme: IconThemeData(
-            color: Colors.white,
-            size: 50,
-          )
-        ),
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.deepPurple,
-          primary: Color(0xffB7935F),
-          secondary: Color(0xffB7935F).withOpacity(0.57),
-          onPrimary: Colors.white,
-          onSecondary: Colors.black,
-        ),
-        useMaterial3: true,
-      ),
+      theme: AppStyle.lightTheme,
+      darkTheme: AppStyle.DarkTheme,
+      themeMode: settingsProvider.themeMode,
+      localizationsDelegates: [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: [
+        Locale('en'), // English
+        Locale('ar'), // Spanish
+      ],
+      locale: Locale(settingsProvider.language),
       initialRoute: HomeScreen.routeName,
       routes: {
         HomeScreen.routeName:(_)=>HomeScreen(),
