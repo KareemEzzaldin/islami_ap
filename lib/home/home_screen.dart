@@ -23,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
     QuranTab(),
     Ahadtehtab(),
     Sebhatab(),
-    Radiotab(),
+    // Radiotab(),
     Setteingstab(),
   ];
 
@@ -70,12 +70,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 label: AppLocalizations.of(context)!.sebha,
 
               ),
-              BottomNavigationBarItem(
-                backgroundColor: Theme.of(context).colorScheme.primary,
-                icon: ImageIcon(AssetImage('assets/images/radio.png')),
-                label: AppLocalizations.of(context)?.radio,
-
-              ),
+              // BottomNavigationBarItem(
+              //   backgroundColor: Theme.of(context).colorScheme.primary,
+              //   icon: ImageIcon(AssetImage('assets/images/radio.png')),
+              //   label: AppLocalizations.of(context)?.radio,
+              //
+              // ),
               BottomNavigationBarItem(
                 backgroundColor: Theme.of(context).colorScheme.primary,
                 icon: Icon(Icons.settings),
